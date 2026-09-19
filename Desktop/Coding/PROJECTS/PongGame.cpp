@@ -19,7 +19,7 @@ int main(){
     bool fadingIn = false;
     float paddle1X = 15;
     float paddle2X = screenWidth - 35;
-    float paddle1Y = screenHeight / 2 - 75;
+    float paddle1Y = screenHeight / 2 - 75;            // Defining
     float paddle2Y = screenHeight / 2 - 75;
 
     int Player1Score = 0;
@@ -38,7 +38,7 @@ int main(){
     Ball ball;
     ball.x = screenWidth / 2;
     ball.y = screenHeight / 2;
-    ball.speedX = 5;
+    ball.speedX = 5;                    //Defining Ball OOP
     ball.speedY = -5;
     ball.radius = 10;
     int Score1 = 0;
@@ -49,7 +49,7 @@ int main(){
             if (fadingIn) {
                 alpha += fadeSpeed * GetFrameTime();
                 if (alpha >= 1.0f) {
-                    alpha = 1.0f;
+                    alpha = 1.0f;                           //Fading Intro
                     introFinished = true;
                 }
             } else {
@@ -67,8 +67,7 @@ int main(){
             DrawText("PONG GAME!", 450, 350, 50, Fade(WHITE, alpha));
         } else {
 
-            
-
+            // Updation
             ball.x += ball.speedX;
             ball.y += ball.speedY;
 
@@ -79,6 +78,8 @@ int main(){
                 ball.speedX *= -1;
             }
 
+
+            //Collision
             if (CheckCollisionCircleRec( Vector2{ball.x, ball.y} , ball.radius , Rectangle{paddle1X , paddle1Y , 20 , 225})){
                 ball.speedX *= -1;
                 
@@ -89,6 +90,8 @@ int main(){
                 
             }
 
+            //Score
+
             if ( ball.x + ball.radius >= GetScreenWidth()){
                 Player1Score ++;
             }
@@ -97,6 +100,7 @@ int main(){
             }
             
 
+            //Drawing
             DrawCircle(ball.x, ball.y, ball.radius, WHITE);
 
             DrawLine( screenWidth / 2, 0, screenWidth / 2, screenHeight, WHITE);
@@ -128,6 +132,3 @@ int main(){
  
     return 0;
 }
-
-    
-
